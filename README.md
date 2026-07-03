@@ -1,16 +1,44 @@
-# React + Vite
+# Somativa 1 - Aplicativo React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma aplicação React com Vite, criada para demonstrar um fluxo de cadastro, login e página principal.
 
-Currently, two official plugins are available:
+## Deploy no GitHub Pages
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+O projeto já está preparado para publicação no GitHub Pages com Vite e rotas.
 
-## React Compiler
+### O que foi configurado
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `gh-pages` adicionado como dependência de desenvolvimento
+- `homepage` configurado para o repositório do GitHub
+- `base` do Vite definido para o subpath do projeto
+- `HashRouter` usado para compatibilidade com rotas no GitHub Pages
 
-## Expanding the ESLint configuration
+### Como publicar
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Certifique-se de que o repositório remoto já está conectado.
+2. Execute o build e o deploy:
+
+```bash
+npm run deploy
+```
+
+3. No GitHub, abra as configurações do repositório e ative o GitHub Pages usando a branch `gh-pages`.
+
+### Visualizar o site
+
+Após o deploy, o projeto ficará disponível em:
+
+- https://cacalock.github.io/Tecnologias-Para-Desenvolvimento-Web-Somativa-2/
+
+## Como rodar localmente
+
+```bash
+npm install
+npm run dev
+```
+
+## Build para produção
+
+```bash
+npm run build
+```
