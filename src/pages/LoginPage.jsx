@@ -38,9 +38,16 @@ export default function LoginPage({ onLogin }) {
                 }
             } catch (fireError) {
                 console.error(
-                    'Falha ao ler Firestore, usando fallback do Auth:',
+                    'Falha ao ler Firestore, usando fallback local:',
                     fireError,
                 );
+            }
+
+            if (!userData) {
+                const dadosSalvos = localStorage.getItem(`user:${uid}`);
+                if (dadosSalvos) {
+                    userData = JSON.parse(dadosSalvos);
+                }
             }
 
             if (!userData) {

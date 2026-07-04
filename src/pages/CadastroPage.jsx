@@ -33,19 +33,30 @@ export default function CadastroPage() {
             );
             const uid = userCredential.user.uid;
 
+            const dadosUsuario = {
+                uid,
+                email,
+                nome,
+                sobrenome,
+                dataNascimento,
+            };
+
             try {
                 await withTimeout(
-                    setDoc(doc(db, 'users', uid), {
-                        uid,
-                        email,
-                        nome,
-                        sobrenome,
-                        dataNascimento,
+                    setDoc(doc(db, 'users', uid), dadosUsuario, {
+                        merge: true,
                     }),
+                );
+                localStorage.setItem(
+                    `user:${uid}`,
+                    JSON.stringify(dadosUsuario),
                 );
             } catch (firestoreError) {
                 console.error('Falha ao gravar no Firestore:', firestoreError);
-                // não interrompe o fluxo de cadastro — tentaremos salvar o displayName no Auth
+                localStorage.setItem(
+                    `user:${uid}`,
+                    JSON.stringify(dadosUsuario),
+                );
             }
 
             try {

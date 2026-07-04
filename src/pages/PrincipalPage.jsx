@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react'; // Adicionado useMemo aqui
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase.js';
 import { signOut } from 'firebase/auth';
@@ -18,6 +18,10 @@ export default function PrincipalPage({ userData, onLogout }) {
         navigate('/login');
     };
 
+    const randomImageNumber = useMemo(() => {
+        return Math.floor(Math.random() * 5) + 1;
+    }, []);
+
     if (!userData) {
         return (
             <main>
@@ -27,9 +31,11 @@ export default function PrincipalPage({ userData, onLogout }) {
         );
     }
 
+    const imageUrl = `./dist/assets/${randomImageNumber}.jpg`;
+
     return (
         <main>
-            <h2>Página Principal</h2>
+            <h2>Seus Dados</h2>
             <div className="cartao">
                 <p>
                     <strong>Nome:</strong> {userData.nome}
@@ -39,8 +45,9 @@ export default function PrincipalPage({ userData, onLogout }) {
                 </p>
                 <p>
                     <strong>Data de Nascimento:</strong>{' '}
-                    {userData.dataNascimento}
+                    {userData.dataNascimento || 'Não informada'}
                 </p>
+                <img src={imageUrl} alt="Foto" />
             </div>
             <button onClick={sair}>Sair</button>
         </main>
