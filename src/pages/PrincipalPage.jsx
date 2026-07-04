@@ -31,7 +31,13 @@ export default function PrincipalPage({ userData, onLogout }) {
         );
     }
 
-    const imageUrl = `./dist/assets/${randomImageNumber}.jpg`;
+    const initialsName =
+        `${userData.nome || ''} ${userData.sobrenome || ''}`.trim();
+    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+        initialsName || 'Usuário',
+    )}&size=200&background=F5C6E7&color=ffffff&rounded=true`;
+
+    const imageUrl = userData.photoURL || userData.foto || avatarUrl;
 
     return (
         <main>
